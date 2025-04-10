@@ -16,29 +16,25 @@ function UpdateEmp() {
         if (oldEmp) {
             setEmployee({
                 ...oldEmp,
-                hobby: Array.isArray(oldEmp.hobby) ? oldEmp.hobby : [],  
-                gender: oldEmp.gender || "",  
+                hobby: Array.isArray(oldEmp.hobby) ? oldEmp.hobby : [],
+                gender: oldEmp.gender || "",
             })
         }
     }, [id, empData]);
 
-    console.log(employee)
-
     const getInput = (e) => {
         const { name, value, type, checked } = e.target;
 
-        if (type === 'checkbox' ) {
+        if (type === 'checkbox') {
             const hobbies = employee.hobby || [];
             if (checked) {
                 setEmployee({ ...employee, hobby: [...hobbies, value] });
             } else {
                 setEmployee({ ...employee, hobby: hobbies.filter(h => h !== value) });
             }
-            setEmployee({ ...employee, hobby: hobbies });
-        } else if (type=== 'radio') {
-            setEmployee({ ...employee, [name]: value }); 
-        }
-        else {
+        } else if (type === 'radio') {
+            setEmployee({ ...employee, [name]: value });
+        } else {
             setEmployee({ ...employee, [name]: value });
         }
     };
@@ -54,13 +50,13 @@ function UpdateEmp() {
     };
 
     return (
-        <div className="bg-dark min-vh-100 py-5">
+        <div className="bg-light min-vh-100 py-5">
             <Container>
                 <Row className="justify-content-center">
                     <Col md={8} lg={6}>
-                        <Card className="p-4 shadow-lg" bg="dark" text="light">
+                        <Card className="p-4 shadow-lg border-0 rounded-4" bg="light" text="dark">
                             <Card.Body>
-                                <h2 className="text-center mb-4">Edit Employee</h2>
+                                <h2 className="text-center mb-4" style={{ color: '#0d6efd' }}>Edit Employee</h2>
                                 <Form onSubmit={submitData}>
                                     <Form.Group className="mb-3">
                                         <Form.Label>Name</Form.Label>
@@ -71,6 +67,7 @@ function UpdateEmp() {
                                             onChange={getInput}
                                             placeholder="Enter name"
                                             required
+                                            className="border-2 border-light shadow-sm"
                                         />
                                     </Form.Group>
 
@@ -83,6 +80,7 @@ function UpdateEmp() {
                                             onChange={getInput}
                                             placeholder="Enter email"
                                             required
+                                            className="border-2 border-light shadow-sm"
                                         />
                                     </Form.Group>
 
@@ -94,6 +92,7 @@ function UpdateEmp() {
                                             value={employee.age || ""}
                                             onChange={getInput}
                                             placeholder="Enter age"
+                                            className="border-2 border-light shadow-sm"
                                         />
                                     </Form.Group>
 
@@ -105,6 +104,7 @@ function UpdateEmp() {
                                             value={employee.password || ""}
                                             onChange={getInput}
                                             placeholder="Enter password"
+                                            className="border-2 border-light shadow-sm"
                                         />
                                     </Form.Group>
 
@@ -116,19 +116,20 @@ function UpdateEmp() {
                                                 type="radio"
                                                 label="Male"
                                                 name="gender"
-                                                value="male"
-                                                checked={employee.gender == 'Male' ? "checked" : ""}
+                                                value="Male"
+                                                checked={employee.gender === 'Male'}
                                                 onChange={getInput}
-
+                                                className="text-dark"
                                             />
                                             <Form.Check
                                                 inline
                                                 type="radio"
                                                 label="Female"
                                                 name="gender"
-                                                value="female"
-                                                checked={employee.gender == 'Female' ? "checked" : ""}
+                                                value="Female"
+                                                checked={employee.gender === 'Female'}
                                                 onChange={getInput}
+                                                className="text-dark"
                                             />
                                         </div>
                                     </Form.Group>
@@ -144,6 +145,7 @@ function UpdateEmp() {
                                                 value="Cricket"
                                                 checked={employee.hobby?.includes('Cricket')}
                                                 onChange={getInput}
+                                                className="text-dark"
                                             />
                                             <Form.Check
                                                 inline
@@ -153,6 +155,7 @@ function UpdateEmp() {
                                                 value="Football"
                                                 checked={employee.hobby?.includes('Football')}
                                                 onChange={getInput}
+                                                className="text-dark"
                                             />
                                             <Form.Check
                                                 inline
@@ -162,6 +165,7 @@ function UpdateEmp() {
                                                 value="Music"
                                                 checked={employee.hobby?.includes('Music')}
                                                 onChange={getInput}
+                                                className="text-dark"
                                             />
                                             <Form.Check
                                                 inline
@@ -171,12 +175,13 @@ function UpdateEmp() {
                                                 value="Reading"
                                                 checked={employee.hobby?.includes('Reading')}
                                                 onChange={getInput}
+                                                className="text-dark"
                                             />
                                         </div>
                                     </Form.Group>
 
                                     <div className="text-center">
-                                        <Button variant="primary" type="submit" className="px-5">
+                                        <Button variant="primary" type="submit" className="px-5 py-2 rounded-3 shadow-sm" style={{ fontSize: '1.1rem' }}>
                                             Update
                                         </Button>
                                     </div>
