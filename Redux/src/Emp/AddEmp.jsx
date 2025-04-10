@@ -4,13 +4,13 @@ import { addEmp } from '../redux/actions';
 import { Form, Button, Container, Card, Row, Col } from 'react-bootstrap';
 import 'animate.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../App.css'
+import '../App.css';
 
 function AddEmp() {
-    let [employee, setEmployee] = useState({});
-    let [hobby, setHobby] = useState([]);
-    let empData = useSelector((state) => state.empData.employee);
-    let dispatch = useDispatch();
+    const [employee, setEmployee] = useState({});
+    const [hobby, setHobby] = useState([]);
+    const empData = useSelector((state) => state.empData.employee);
+    const dispatch = useDispatch();
 
     const getInput = (e) => {
         const name = e.target.name;
@@ -44,61 +44,61 @@ function AddEmp() {
     };
 
     return (
-        <Container fluid className="min-vh-100 d-flex justify-content-center align-items-center bg-dark">
-            <Card className="p-4 shadow-lg border-0 rounded-4 bg-black text-light animate__animated animate__fadeIn" style={{ width: '100%', maxWidth: '500px' }}>
-                <h2 className="text-center mb-4 fw-bold" style={{ color: '#0d6efd' }}>Add Employee</h2>
+        <Container fluid className="min-vh-100 d-flex justify-content-center align-items-center bg-light">
+            <Card className="p-5 shadow-lg border-0 rounded-4 bg-white text-dark animate__animated animate__fadeIn" style={{ width: '100%', maxWidth: '600px' }}>
+                <h2 className="text-center mb-5 fw-bold" style={{ color: '#007bff' }}>Add Employee</h2>
 
                 <Form onSubmit={submitData}>
-                    <Form.Group className="mb-3">
-                        <Form.Label>Name</Form.Label>
+                    <Form.Group className="mb-4">
+                        <Form.Label className="fw-semibold">Name</Form.Label>
                         <Form.Control
                             type="text"
                             name="name"
                             value={employee.name || ''}
                             onChange={getInput}
                             placeholder="Enter your name"
-                            className="bg-dark text-light border-secondary rounded-3 focus-ring"
+                            className="bg-light text-dark border-secondary rounded-3 focus-ring"
                         />
                     </Form.Group>
 
-                    <Form.Group className="mb-3">
-                        <Form.Label>Email</Form.Label>
+                    <Form.Group className="mb-4">
+                        <Form.Label className="fw-semibold">Email</Form.Label>
                         <Form.Control
                             type="email"
                             name="email"
                             value={employee.email || ''}
                             onChange={getInput}
                             placeholder="Enter your email"
-                            className="bg-dark text-light border-secondary rounded-3 focus-ring"
+                            className="bg-light text-dark border-secondary rounded-3 focus-ring"
                         />
                     </Form.Group>
 
-                    <Form.Group className="mb-3">
-                        <Form.Label>Age</Form.Label>
+                    <Form.Group className="mb-4">
+                        <Form.Label className="fw-semibold">Age</Form.Label>
                         <Form.Control
                             type="number"
                             name="age"
                             value={employee.age || ''}
                             onChange={getInput}
                             placeholder="Enter your age"
-                            className="bg-dark text-light border-secondary rounded-3 focus-ring"
+                            className="bg-light text-dark border-secondary rounded-3 focus-ring"
                         />
                     </Form.Group>
 
-                    <Form.Group className="mb-3">
-                        <Form.Label>Password</Form.Label>
+                    <Form.Group className="mb-4">
+                        <Form.Label className="fw-semibold">Password</Form.Label>
                         <Form.Control
                             type="password"
                             name="password"
                             value={employee.password || ''}
                             onChange={getInput}
                             placeholder="Enter your password"
-                            className="bg-dark text-light border-secondary rounded-3 focus-ring"
+                            className="bg-light text-dark border-secondary rounded-3 focus-ring"
                         />
                     </Form.Group>
 
-                    <Form.Group className="mb-3">
-                        <Form.Label>Gender</Form.Label>
+                    <Form.Group className="mb-4">
+                        <Form.Label className="fw-semibold">Gender</Form.Label>
                         <Row className="ms-1">
                             <Col xs="auto">
                                 <Form.Check
@@ -108,7 +108,7 @@ function AddEmp() {
                                     value="Male"
                                     checked={employee.gender === "Male"}
                                     onChange={getInput}
-                                    className="text-light"
+                                    className="text-dark"
                                 />
                             </Col>
                             <Col xs="auto">
@@ -119,14 +119,14 @@ function AddEmp() {
                                     value="Female"
                                     checked={employee.gender === "Female"}
                                     onChange={getInput}
-                                    className="text-light"
+                                    className="text-dark"
                                 />
                             </Col>
                         </Row>
                     </Form.Group>
 
                     <Form.Group className="mb-4">
-                        <Form.Label>Hobbies</Form.Label>
+                        <Form.Label className="fw-semibold">Hobbies</Form.Label>
                         <div className="d-flex flex-wrap gap-3 ms-1">
                             {["Cricket", "Football", "Music", "Reading"].map((h, i) => (
                                 <Form.Check
@@ -137,7 +137,7 @@ function AddEmp() {
                                     value={h}
                                     checked={hobby.includes(h)}
                                     onChange={getInput}
-                                    className="text-light"
+                                    className="text-dark"
                                 />
                             ))}
                         </div>
@@ -145,9 +145,9 @@ function AddEmp() {
 
                     <Button
                         type="submit"
-                        variant="outline-primary"
+                        variant="primary"
                         className="w-100 rounded-3 fw-bold shadow-sm"
-                        style={{ padding: '10px 0', fontSize: '1.1rem', borderWidth: '2px' }}
+                        style={{ padding: '12px 0', fontSize: '1.1rem', borderWidth: '2px' }}
                     >
                         Submit
                     </Button>
